@@ -5,7 +5,7 @@ const FilmList = (props) => {
 
 const filmNodes = props.data.map((filmLink) => {
   return (
-    <Film={film.name} url={film.url}
+    <FilmLink name={filmLink.name} url={filmLink.url}/>
   )
 })
 return (

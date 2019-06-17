@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import FilmList from './components/FilmList';
-import FilmForm from './components/FilmForm';
+import FilmList from '../components/FilmList';
+import FilmForm from '../components/FilmForm';
 
 class FilmView extends Component{
   constructor(props) {
@@ -34,13 +34,14 @@ class FilmView extends Component{
                 url: "https://www.imdb.com/title/tt4154664/?ref_=rlm"
               }
             ]
+          }
                this.handleFilmSubmit = this.handleFilmSubmit.bind(this);
              }
 
              handleFilmSubmit(newFilm){
                newFilm.id = Date.now();
-               const updatedFilms = [..this state.data, newFilm];
-               this setState({data: updatedFilms});
+               const updatedFilms = [...this.state.data, newFilm];
+               this.setState({data: updatedFilms});
              }
 
 
@@ -49,9 +50,11 @@ class FilmView extends Component{
       return (
 
         <div>
+          <FilmList handleFilmSubmit={this.handleFilmSubmit}/>
+          <hr />
           <h1>Upcoming Film Releases For UK</h1>
           <hr/>
-          <FilmList data>{this.state.data}/>
+          <FilmList data={this.state.data}/>
         </div>
 
       )
